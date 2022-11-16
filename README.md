@@ -1,0 +1,2 @@
+# rust-note
+rust-learn
