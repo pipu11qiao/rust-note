@@ -21,8 +21,6 @@ More often, you'll create a Vec<T> with initial values and Rust will infer the t
 let v =vec![1,2,3];
 ```
 
-### Updating a Vector
-
 ```rust
 let mut v = Vec::new();
 v.push(5);
@@ -32,104 +30,59 @@ v.push(7);
 
 Reading Elements of Vectors
 
+There are two ways to reference a value stored in a vector: via indexing or using the get method.
+
+#### methods for iterating over strings
+
+- "2A".charts()
+- "2A".bytes()
+
+### Strings Are Not So simple
+
+strings are complicated
+
+# 8.3 Storing Keys with Associated Values in Hash Maps
+
+The type Hash<K,V> stores a mapping of keys of type K to values of type V using a hasing function, which determines how it places these keys and values into memory.
+
+### Creating a New Hash Map
+using new and adding elements with insert
+
+
 ```rust
-   let v = vec![1, 2, 3, 4, 5];
-
-    let third: &i32 = &v[2];
-    println!("The third element is {}", third);
-
-    let third: Option<&i32> = v.get(2);
-    match third {
-        Some(third) => println!("The third element is {}", third),
-        None => println!("There is no third element."),
-    }
+use std::collection::HashMap
+let mut scores = HashMap::new();
+scores.insert(String::from("Blue"),10);
 
 ```
 
-supply for index and get two ways .
-when you try to use an index value outside the range of existing elements.
+### Accessing Values in a Hash Map
 
-#### mutable and immutable
+use get() method returns an Option<&V>
 
-because vectors put the values next to each other in memory, adding a new element onto the end of the vector might require allocating new memory and copying the old elemetns to the new space.
+can iterate over each key/value pair in a hash map in a similar manner as we do with vectors, using a for loop:
 
-### Iterating over the Values in a Vector
+### Hash Maps and Ownership
 
-```rust
-let v = vec![100,32,57];
-for i in &v{
-  pringtln!("{}",i)
-}
-```
+For types that implements the Copy trait, the values are copied into the hash map. For owned values like a String ,the values will be moved and the hash map will be the owner of those values.
 
-# 8.2 Storing UTF-8 Encode Text with Strings
 
-we discuss strings in the context of colletions because strings are implement4ed as a collection of bytes;
-in this section, we'll talk about the operations on String that every collection type has, such as creating, updating, and reading. We'll also discuss the ways in which String is different from the other collections, namely how indexing into a String is complicated by the fiffereneces between how people and computers interpret String data.
+### Updating a Hash Map 
 
-### What is a String
+a same key 
 
-- the String
-- the string slice &str
+#### Overwriting a Value
 
-The String type, which is provided by rust's library rather than code into the corelanguage, is a growable, mutable,owned.UTF-8 encoded string type.
+use insert() to overwrite the same key
 
-### Creating a new String
+#### adding a key and value only if a key isn't present
 
-mamy of the same operations available with Vec<T> are available with String as well as, because String is actually implemented as a wrapper around a vector of bytes with some extra guarantees,restrictions,and capabilities.
+entry() check . the return value of the entry() is an enum called Entry
 
-```rust
-let mut s = String::new();
-```
+#### updating a value based on the old value
 
-```rust
-let data = "initial contents";
 
-let s = data.to_string();
 
-let s = "initial contents".to_string();
-```
+### hashing functions
 
-```rust
-let s = String::from("initial contents");
-```
-
-- push_str takes a string slice
-- push takes a single character
-
-#### Concatenation with + Operator or the format! Macro
-
-```rust
-let s3 = s1 + &s2;
-```
-
-why + left is String and right is reference
-
-- operator uses the add method
-
-```rust
-fn add(self,s:&str)-> String{}
-```
-
-will lose s1;
-
-&s2 is &String not &str
-
-why it can compile
-
-The reason we're able to use &s2 in the call to ad is that the compiler can coerce the &String argument into a &str. When we call the add method, Rust uses a deref coercion, which here turns &s2 into &s2[..].
-
-```rust
-let s = format!("{}-{}-{}",s1,s2,s3);
-```
-
-### indexing string
-
-rust don't support indexing the way
-```rust
-    let s1 = String::from("hello");
-    let h = s1[0];
-```
-
-#### Internal Representation
 

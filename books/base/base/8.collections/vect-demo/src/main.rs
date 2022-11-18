@@ -1,14 +1,13 @@
+use std::collections::HashMap;
 fn main() {
-    // let mut s = String::new();
-    // println!("{:?}", s);
+    let text = "hello world wonderful world";
 
-    // let data = "initial contents";
-    // let s = data.to_string();
+    let mut map = HashMap::new();
 
-    // let s = "initial contents".to_string();
-    // let mut s = String::from("foo");
-    // s.push_str("bar")
-    let s1 = String::from("Hello,");
-    let s2 = String::from("world!");
-    let s3 = s1 + &s2;
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", map);
 }
