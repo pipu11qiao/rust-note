@@ -1,12 +1,14 @@
 fn main() {
-    let v = vec![1, 2, 3, 4, 5];
+    // let mut s = String::new();
+    // println!("{:?}", s);
 
-    let third: &i32 = &v[2];
-    println!("The third element is {}", third);
+    // let data = "initial contents";
+    // let s = data.to_string();
 
-    let third: Option<&i32> = v.get(2);
-    match third {
-        Some(third) => println!("The third element is {}", third),
-        None => println!("There is no third element."),
-    }
+    // let s = "initial contents".to_string();
+    // let mut s = String::from("foo");
+    // s.push_str("bar")
+    let s1 = String::from("Hello,");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2;
 }

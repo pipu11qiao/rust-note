@@ -1,0 +1,1 @@
+These ampersands represent references, and they allow you to refer to some value without taking ownership of it.
