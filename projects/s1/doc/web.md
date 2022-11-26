@@ -57,3 +57,11 @@ Http请求
 * header line 3
 * empty line
 * message body `xxxx` Data
+
+
+Http 响应
+
+* status line `HTTP/1.1 200 OK` Version Status code Status text
+* header line1 `Content-type: text/html` key value
+* empty line
+* message body 
