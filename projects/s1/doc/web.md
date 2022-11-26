@@ -44,6 +44,14 @@ Rust没有内置的HTTP支持
     Debug 打印调试信息
     PartialEq 用于解析和自动化测试脚本里做比较
 * 构建http响应消息
+  * 数据结构
+    * HttpResponse struct 表示http响应
+  * 需要实现的trait
+    * Default trait 指定成员默认值
+    * new() 使用默认值创建一个新的结构体
+    * send_response() 构建响应，将原始字符通过TCP传送
+    * getter() 获得成员的值
+    * From trait 能够将HttpResponse 转化为String
 * 路由与handler
 * 测试web server
 
