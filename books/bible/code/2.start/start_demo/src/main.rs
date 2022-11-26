@@ -1,24 +1,15 @@
-// fn main() {
-//     for i in 1..=5 {
-//         println!("{}", i)
-//     }
-// }
+use std::sync::{Arc, Mutex};
+use std::thread;
+fn main() {
+    let count = Arc::new(Mutex::new(3));
 
-// fn main() {
-//     let v = {
-//         let mut x = 1;
-//         x += 2
-//     };
- 
-//     assert_eq!(v, ());
-//  }
+    let counter = Arc::clone(&count);
 
- fn main() {
-    let v = {
-        let mut x = 1;
-        x += 2;
-        x
-    };
+    let handle = thread::spawn(move || {
+        let mut num = counter.lock().unwrap();
+        *num = 5;
+    });
+    handle.join().unwrap();
 
-    assert_eq!(v, 3);
+    print!("{:?}", *count.lock().unwrap())
 }
