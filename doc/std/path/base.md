@@ -143,3 +143,5 @@ let path = PathBuf::from(r"C:\windows\system32.dll");
 * reserve (&mut self, additional: usize) 在 OsString 的底层实例上调用 reserve_exact。
 * shrink_to_fit(&mut self)在 OsString 的底层实例上调用 shrink_to_fit。
 * shrink_to(&mut self, min_capacity: usize) 在 OsString 的底层实例上调用 shrink_to。
+
+Methods From Deref<Target=Path> 
