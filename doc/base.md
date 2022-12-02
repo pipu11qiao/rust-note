@@ -15,3 +15,8 @@ r##"foo #"# bar"##;                // foo #"# bar
 "\x52"; "R"; r"R";                 // R
 "\\x52"; r"\x52";                  // \x52
 ```
+
+
+### buf和str转换
+
+str::from_utf8(buf)
