@@ -1,12 +1,19 @@
+use std::io::{Write, Read};
+use std::process::{Command, Stdio};
+use std::sync::mpsc;
+use std::thread;
 fn main() {
-    use std::process::{Command, Stdio};
-
-    let output = Command::new("echo")
-        .arg("Hello, world!")
+    let mut child = Command::new("node")
+        .stdin(Stdio::inherit())
         .stdout(Stdio::piped())
-        .output()
+        .spawn()
         .expect("Failed to execute command");
+    let child_stdout = child.stdout.take().unwrap();
+    thread::spawn(move ||{
+        let 
+        child_stdout.read(buf)
 
-    assert_eq!(String::from_utf8_lossy(&output.stdout), "Hello, world!\n");
-    // 控制台没有回显
+    });
+
+    child.wait().expect("command wasn't runing");
 }
